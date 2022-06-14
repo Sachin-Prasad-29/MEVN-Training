@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms in HTML</title>
+  </head>
+  <body>
+    <!-- the browser reads an input fields value only if name attribute is present on that input-->
+    <!-- 
+        GET - URL encoded form in query string (drfault)
+        POST - URL encoded in Requent body
+    -->
+    <form action="demo.html" method="post">
+      <input type="text" name="username" />
+      <input type="password" name="password" />
+      <input type="submit" value="Login" />
+    </form>
+  </body>
+</html>
