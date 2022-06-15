@@ -1,0 +1,21 @@
+ul,
+li {
+  list-style: none;
+  display: inline;
+  padding-inline-start: 0px;
+}
+table {
+  border-collapse: collapse;
+}
+talbe,
+th,
+td {
+  border: 3px solid rgb(3, 104, 17);
+}
+th,
+td {
+  padding: 1em;
+}
+span {
+  align-items: center;
+}

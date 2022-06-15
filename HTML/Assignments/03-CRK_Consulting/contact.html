@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="portflio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <header>
+      <h1>CRK Consulting Pvt. Ltd.</h1>
+      <hr />
+    </header>
+    <section>
+      <h2>Contact Us</h2>
+      <span>Phone:<a href="tel: +91 78753873838">+91 364-373-7386</a></span
+      ><br />
+      <span>Email:<a href="mailto: crk@gmail.com">crk@gmil.com</a></span>
+    </section>
+    <section>
+      <form action="home.html" method="post">
+        <h2>Drop a message</h2>
+        <p>Please drop us a message by filling out this form, ans we get back to you within 2 working days.</p>
+        <p>Fields marked with * are required</p>
+        <span>Your Name *</span><br />
+        <input type="text" name="username" placeholder="Jone Doe" /><br /><br />
+        <span>Your Email *</span><br />
+        <input type="email" name="email" placeholder="jonn123@gmail.com" /><br /><br />
+        <span>What are you looking to build ? *</span><br />
+        <select name="looking_to_build" aria-placeholder="choose">
+          <option value="none">Select an option-</option>
+          <option>Blog</option>
+          <option>Online Store</option>
+          <option>Game</option>
+          <option>Other</option></select
+        ><br /><br />
+        <span>Platforms you plan to Support *</span><br />
+        <input type="checkbox" name="WEB" />
+        <label for="vehicle1">Web</label>
+        <input type="checkbox" name="Mobile" />
+        <label for="vehicle2">Mobile</label>
+        <input type="checkbox" name="Desktop" />
+        <label for="vehicle3">Desktop</label><br />
+        <label for="story">Message:</label><br />
+
+        <textarea id="story" name="message" rows="3" cols="20"> </textarea><br />
+        <input type="reset" />
+        <input type="submit" />
+      </form>
+    </section>
+    <footer>
+      <hr />
+      <p>&#169;crkconsulting.com</p>
+    </footer>
+  </body>
+</html>
