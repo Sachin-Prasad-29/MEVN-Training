@@ -19,3 +19,7 @@ td {
 span {
   align-items: center;
 }
+div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
