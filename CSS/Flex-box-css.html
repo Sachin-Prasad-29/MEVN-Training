@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+
+        /* space-around, space-evenly, flex-start, flex-end, center */
+        justify-content: space-between; /* main axis arrangement */
+
+        /* children should stretch to occupy the same height */
+        align-items: stretch; /* cross-axis arrangement */
+      }
+
+      .col {
+        flex-basis: 100%;
+        background-color: lightblue;
+        margin-bottom: 2em;
+      }
+
+      /* tablet */
+      @media all and (min-width: 600px) {
+        .col {
+          flex-basis: 45%;
+        }
+      }
+
+      /* desktop */
+      /*  width >= 1000px */
+      @media all and (min-width: 1000px) {
+        .col {
+          flex-basis: 28%;
+        }
+      }
+
+      /* dekstop */
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nobis iste natus tempore vero ex distinctio nostrum
+        animi error tenetur cum eum ipsum sit neque, est nulla a aut! Veniam.
+      </div>
+      <div class="col">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae voluptatem officiis ullam rem quis dolore
+        qui fuga hic neque perspiciatis, sunt harum perferendis illum consequatur quas culpa reprehenderit omnis
+        accusantium. Perspiciatis, nam, quo cupiditate in nihil ipsa ad aspernatur ducimus assumenda itaque ratione
+        debitis? Laborum voluptatem iusto veritatis aliquam at exercitationem, dolorem nihil veniam sint, aut
+        praesentium ex rerum officiis.
+      </div>
+      <div class="col">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure quod debitis molestias, cumque placeat in
+        adipisci doloremque saepe tempore, quos id! Ullam vitae nisi, accusamus obcaecati id distinctio! Molestias,
+        assumenda? At natus veniam reprehenderit consequatur molestiae cumque aliquam iste laudantium rem, dicta
+        assumenda. Nisi aliquid officiis delectus, velit ducimus corporis tenetur, fuga officia blanditiis assumenda
+        pariatur ratione error modi necessitatibus? Impedit quam dignissimos quia, maiores illum mollitia porro iusto,
+        sunt, architecto quos soluta error quasi voluptate. Nisi, error? Consequuntur voluptates error animi consequatur
+        ab cupiditate saepe repellendus quo debitis iste.
+      </div>
+    </div>
+  </body>
+</html>

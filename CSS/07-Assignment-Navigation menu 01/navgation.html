@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation Menu 1</title>
+    <style>
+      .container {
+        margin: 40px;
+        size: 200%;
+      }
+      .nav-card {
+        border: 1px solid black;
+        width: 400px;
+        background-color: black;
+      }
+      .nav-card {
+        border: 1px solid black;
+      }
+      li {
+        list-style: none;
+        padding: 5px;
+      }
+      .top-items {
+        border: 1px solid black;
+        border-right: none;
+        width: 400px;
+        position: relative;
+        background-color: black;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.397);
+      }
+      .img-logo {
+        margin-left: 190px;
+        margin-top: 6px;
+      }
+      .dialog-close {
+        position: absolute;
+        top: 0px;
+        left: 5px;
+        cursor: pointer;
+        font-size: 1.5em;
+        line-height: 1;
+        color: white;
+      }
+      .search-bar {
+        margin: 5px 5px 6px 5px;
+      }
+      .search-bar input {
+        width: 93%;
+        background-color: rgba(62, 59, 59, 0.446);
+        border: none;
+        border-radius: 3px;
+        color: white;
+        font-size: 0.7em;
+        padding: 4px;
+        margin-left: 8px;
+      }
+      .list-item ul {
+        margin: 2px 3px;
+        padding: 0px;
+      }
+      .list-item {
+        margin: 0px 18px 0px 18px;
+        background-color: black;
+        padding-bottom: 20px;
+        border: 2px solid black;
+
+        font-size: 0.7em;
+      }
+      ul a {
+        color: white;
+        text-decoration: none;
+        font-family: sans-serif;
+      }
+      ::placeholder {
+        color: rgba(192, 189, 189, 0.854);
+      }
+      .list-item ul li {
+        padding: 7px 0px;
+        margin-left: 4px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.392);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav-card">
+        <div class="top-items">
+          <div><img src="apple-logo.png" class="img-logo" alt="apple-logo" width="20px" /></div>
+          <div class="search-bar"><input type="text" placeholder="Search apple.com" /></div>
+          <span class="dialog-close">&times;</span>
+        </div>
+        <div class="list-item">
+          <ul>
+            <a href="#">
+              <li>Mac</li>
+            </a>
+            <a href="#">
+              <li>iPad</li>
+            </a>
+            <a href="#">
+              <li>iPhone</li>
+            </a>
+            <a href="#">
+              <li>Watch</li>
+            </a>
+            <a href="#">
+              <li>TV</li>
+            </a>
+            <a href="#">
+              <li>Music</li>
+            </a>
+            <a href="#">
+              <li>Support</li>
+            </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex-box menu</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.min.css" />
+    <style>
+     
+      nav {
+        background-color: rgb(212, 57, 43);
+      }
+      .menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      .menu a {
+        text-decoration: none;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
+        color: white;
+        font-size: 1.4em;
+        padding: 0.4em;
+        border: none;
+        border-radius: 4px;
+      }
+      .menu a:hover:not(.logo-link) {
+        background-color: rgba(0, 0, 0, 0.219);
+      }
+      
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul class="menu">
+        <li>
+          <a href="Flex-box-menu.html" class="logo-link"><img src="SMASH LOGO.png" alt="" /></a>
+        </li>
+        <li>
+          <a href="#">Articles</a>
+        </li>
+        <li>
+          <a href="#">Books</a>
+        </li>
+        <li>
+          <a href="#">WorkShops</a>
+        </li>
+        <li>
+          <a href="#">Conferences</a>
+        </li>
+        <li>
+          <a href="#">Membership</a>
+        </li>
+        <li>
+          <a href="#" class="More">More <i class="fa-solid fa-shield-cat"></i></i></a>
+        </li>
+        <li>
+          <input type="search" class="search-box"/>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>

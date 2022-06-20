@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+      crossorigin="anonymous"
+    ></script>
+    <title>Nav-Float</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      nav {
+        background-color: #1d1d1f;
+        width: 100%;
+        height: 50px;
+        color: lightgray;
+      }
+      li {
+        display: inline-block;
+        line-height: 3em;
+        /* padding-left: 35px; */
+      }
+      .nav-items {
+        float: 1.5%;
+        margin: 0 1.5%;
+      }
+
+      @media (max-width: 800px) {
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        nav {
+          background-color: #1d1d1f;
+          width: 100%;
+          height: auto;
+          color: lightgray;
+        }
+        li {
+          display: block;
+          line-height: 1.5em;
+          padding: 5px;
+        }
+        .nav-items {
+          float: 1.5%;
+          margin: 0 1.5%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li class="nav-items"><i class="fab fa-apple"></i></li>
+        <li class="nav-items">Store</li>
+        <li class="nav-items">Mac</li>
+        <li class="nav-items">iPad</li>
+        <li class="nav-items">Watch</li>
+        <li class="nav-items">AirPods</li>
+        <li class="nav-items">TV & Home</li>
+        <li class="nav-items">Only on Apple</li>
+        <li class="nav-items">Accessories</li>
+        <li class="nav-items">Support</li>
+        <li class="nav-items">iPhone</li>
+        <li class="nav-items"><i class="fas fa-search"></i></li>
+        <li class="nav-items"><i class="fas fa-shopping-bag"></i></li>
+      </ul>
+    </nav>
+  </body>
+</html>

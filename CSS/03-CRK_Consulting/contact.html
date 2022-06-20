@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="portflio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <header>
+      <h1>CRK Consulting Pvt. Ltd.</h1>
+      <hr />
+    </header>
+    <section>
+      <h2>Contact Us</h2>
+      <span>Phone:<a href="tel: +91 78753873838">+91 364-373-7386</a></span
+      ><br />
+      <span>Email:<a href="mailto: crk@gmail.com">crk@gmil.com</a></span>
+    </section>
+    <section>
+      <form action="home.html" method="post">
+        <h2>Drop a message</h2>
+        <p>Please drop us a message by filling out this form, and we get back to you within 2 working days.</p>
+        <p>Fields marked with * are required</p>
+        <div>
+          <div>
+            <label for="username">Your Name</label>
+          </div>
+          <div>
+            <input type="text" id="username" name="username" placeholder="Jone Doe" />
+          </div>
+        </div>
+        <div>
+          <div>
+            <label for="email">Email</label>
+          </div>
+          <div>
+            <input type="email" name="email" id="email" placeholder="jonn123@gmail.com" />
+          </div>
+        </div>
+        <div>
+          <div>
+            <label for="looking_to_build">What are you looking to build ? *</label>
+          </div>
+          <div>
+            <select name="looking_to_build" id="looking_to_build" aria-placeholder="choose">
+              <option value="none">Select an option-</option>
+              <option value="blog">Blog</option>
+              <option value="online store">Online Store</option>
+              <option value="Game">Game</option>
+              <option value="others">Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div>
+            <span>Platforms you plan to Support *</span>
+          </div>
+          <div>
+            <input type="checkbox" id="web" value="web" name="Platforms" />
+            <label for="web">Web</label>
+            <input type="checkbox" id="Mobile" value="mobile" name="Platforms" />
+            <label for="Mobile">Mobile</label>
+            <input type="checkbox" id="Desktop" value="Desktop" name="Platforms" />
+            <label for="Desktop">Desktop</label>
+          </div>
+        </div>
+        <div>
+          <div>
+            <label for="message">Message:</label>
+          </div>
+          <div>
+            <textarea name="message" rows="3" cols="20"> </textarea>
+          </div>
+        </div>
+        <div>
+          <input type="reset" />
+
+          <input type="submit" />
+        </div>
+      </form>
+    </section>
+    <footer>
+      <hr />
+      <p>&#169;crkconsulting.com</p>
+    </footer>
+  </body>
+</html>
