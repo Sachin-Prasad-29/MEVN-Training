@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Introduction</title>
+    <!-- 
+        using script this is even better than including at the buttom - the script download starts immediaterly,
+        but execution ispostponed (deferred) to after page shows up
+     -->
+  </head>
+  <body>
+    <!-- 
+             Operation on an HTML document 
+             - Change HTML within an element (CHANGE THE TEXT, ADD A NEW ELMENT , remove an element)
+             - Change the styles of the page -background color, hide /show
+             -handle use interactions
+             - 
+          -->
+    <p>Default text within th para</p>
+
+    <script>
+      // always put the script tag at the buttom because
+      console.dir(window);
+      console.dir(document); // represent the loaded html page
+      console.dir(document.children);
+      console.dir(document.children[0]);
+      console.dir(document.children[0].children);
+      console.dir(document.children[0].children[1].children);
+
+    </script>
+  </body>
+</html>

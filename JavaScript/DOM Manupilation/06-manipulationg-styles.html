@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom manipulation</title>
+    <style>
+      .alert {
+        padding: 2em 2em;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+        border-color: black;
+        font-size: larger;
+      }
+      .alert-danger {
+        color: rgb(102, 7, 7);
+        background-color: rgba(230, 105, 163, 0.979);
+        border-color: red;
+      }
+      .alert-success {
+        color: rgb(8, 68, 8);
+        background-color: rgb(84, 207, 125);
+        border-color: green;
+      }
+      .alert-info {
+        color: rgb(6, 6, 63);
+        background-color: rgba(105, 147, 211, 0.979);
+        border-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- This div gettign changed based on the Js message array and css  -->
+    <div class="alert" id="alert-message"></div>
+    <script>
+      const alert = document.querySelector("#alert-message");
+      const message = [
+        { type: "error", message: "Something went wrong" },
+        { type: "success", message: "Everthing went right" },
+        { type: "info", message: "Things may go wroing" },
+      ];
+
+      let index = 0;
+      setInterval(
+        // syntax of setInterval if setInterval(fun,2000);
+        () => {
+          const item = message[index];
+          alert.textContent = item.message;
+
+          alert.classList.remove("alert-success"); // removing the previous css
+          alert.classList.remove("alert-danger");
+          alert.classList.remove("alert-info");
+
+          switch (item.type) {
+            case "error":
+              //   alert.style.borderColor = "crimson";
+              //   alert.style.color = "red";
+              //   alert.style.backgroundColor = "lightcoral";
+              alert.classList.add("alert-danger"); // adding the new css int the element using the class
+              break;
+
+            case "success":
+              //   alert.style.borderColor = "green";
+              //   alert.style.color = "green";
+              //   alert.style.backgroundColor = "lightgreen";
+              alert.classList.add("alert-success");
+              break;
+
+            case "info":
+              //   alert.style.borderColor = "blue";
+              //   alert.style.color = "blue";
+              //   alert.style.backgroundColor = "lightblue";
+              alert.classList.add("alert-info");
+              break;
+          }
+          index = (index + 1) % 3;
+        },
+        2000
+      );
+    </script>
+  </body>
+</html>

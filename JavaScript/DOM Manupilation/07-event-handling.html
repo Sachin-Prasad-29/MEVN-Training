@@ -1,0 +1,29 @@
+<!--  Very important topic  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn-click-me">Click me</button>
+    <button id="btn-click-me-2">Click me 2</button>
+  </body>
+  <script>
+    const btnClickMe = document.querySelector("#btn-click-me");
+    const btnClickMe2 = document.querySelector("#btn-click-me-2");
+
+    // Previoud way to add functionality to the button
+    btnClickMe.onclick = function () {
+      alert("I was clicked");
+    };
+
+    // new way to add functionality using eventHandler
+    btnClickMe2.addEventListener('click',function(){
+        alert("Buttton 2 is clicked")
+    })
+
+  </script>
+</html>

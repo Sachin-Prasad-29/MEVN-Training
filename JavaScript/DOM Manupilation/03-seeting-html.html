@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        font-size: 20px;
+      }
+      .banner {
+        padding: 1em;
+        border: 2px solid gray;
+        background-color: rgb(224, 0, 105);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">This is some div</div>
+    <script>
+      const banner = document.querySelector(".banner");
+      setTimeout(() => {
+        banner.textContent = "This is some changed content";
+      }, 2000);
+
+      setTimeout(() => {
+        banner.innerHTML = "This is some changed content like this";
+      }, 4000);
+    </script>
+  </body>
+</html>

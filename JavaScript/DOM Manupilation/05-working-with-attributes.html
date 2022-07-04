@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="" id="social-media-link" data-description=""></a>
+    <script>
+      const links = [
+        { text: "LinkedIn", href: "https://www.linkedin.com", company: "Linkdin Crop" },
+        { text: "Facebook", href: "https://www.facebook.com", company: " Meta" },
+        { text: "Twitter", href: "https://www.twitter.com", company: "Twitter Crop" },
+      ];
+      const linkEl = document.querySelector("#social-media-link");
+      let idx = 0;
+      setInterval(() => {
+        // create helper varibales when you repeat access to array's item objects property
+        const linkId = links[idx];
+        linkEl.textContent = linkId.text;
+        linkEl.href = linkId.href; // or linkEl.setAttribute('href', linkId.href);
+        linkEl.setAttribute("data-description", linkId.company);
+        idx = ++idx % 3;
+
+        // Exercise : Please chekc getAttribute90 to read attribute value, hasAttribute() to check existence of an attribute, 
+        // removeAttribute() to remove an attribute
+      }, 2000);
+    </script>
+  </body>
+</html>

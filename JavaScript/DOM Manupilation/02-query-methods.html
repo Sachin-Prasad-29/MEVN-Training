@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Methods</title>
+  </head>
+  <body>
+    <a href="https://www.google.com/" id="google-link-1"> Google Search 2</a>
+    <section id="Introduction">
+        
+      <p>
+        Para 1
+        <a href="https://www.google.com/" id="google-link-2">Google</a>
+        <a href="https://www.facebook.com/" id="facebook-link">Facebook</a>
+      </p>
+    </section>
+
+    <script>
+        //document.getElementByClassName()
+        //document.getElementById()
+        //document.querySelectorAll( 'p a') -. use any CSS selector in querySelector
+        const googlelink = document.getElementById('google-link-1');
+        console.dir(googlelink);
+
+        const allLinkinPara = document.querySelectorAll( 'p a');
+        console.dir(allLinkinPara);
+
+        const firstLinkInPara = document.querySelector('p a');
+        console.dir(firstLinkInPara);
+
+        const googleLink2 = document.querySelector('#google-link-2');
+        console.dir(googleLink2);
+
+        const intro = document.getElementById( 'Introduction');
+        console.dir(intro);
+         const IntroFirstLink =   intro.querySelector('a');
+         console.dir(IntroFirstLink);
+
+    </script>
+  </body>
+</html>
