@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      input {
+        /* changes the meaning of width - it includes upto border now */
+        width: 100%; /* 100% - 1em - 1em - 1px - 1px */
+        padding: 0.75em 1em;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin: 1em 0;
+      }
+
+      .error {
+        color: red;
+        font-size: 0.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sign in</h1>
+    <hr />
+    <form action="success.html" method="post" id="login-form">
+      <input type="text" name="email" id="email" placeholder="john@fynd.com" />
+      <div class="error" id="email-errors"></div>
+
+      <input type="password" name="password" id="password" />
+      <div class="error" id="password-errors"></div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <script>
+      const validateEmail = () => {
+        let errors = null;
+
+        const emailEl = document.querySelector("#email");
+        const email = emailEl.value.trim();
+
+        // check 1: required
+        if (email === "") {
+          errors = {
+            ...errors,
+            required: "Email cannot be empty",
+          };
+        }
+
+        // check 2: email should be a valid fynd email
+        // * -> 0+ occurences of the preceding character / character set
+        // + -> 1+ occurences of the preceding character
+        // ? -> 0/1 occurences of the preceding character
+        const fyndEmail = /^[A-Za-z][A-Za-z0-9\._\-]+@fynd\.com$/;
+        if (!fyndEmail.test(email)) {
+          errors = {
+            ...errors,
+            pattern: "Not a valid Fynd email",
+          };
+        }
+
+        return errors;
+      };
+
+      const validatePassword = () => {
+        // https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters
+        // var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+        let errors = null;
+
+        const passwordEl = document.querySelector("#password");
+        const password = passwordEl.value;
+
+        // check 1: min length 8
+        if (password.length < 8) {
+          errors = {
+            ...errors,
+            minlength: "Password must have at least 8 characters",
+          };
+        }
+
+        // check 2: Special characters
+        const charList = /[%$#@\*&\^\(\)!;'"]/;
+        if (!charList.test(password)) {
+          errors = {
+            ...errors,
+            specialChars: "Password must have at least 1 special character",
+          };
+        }
+
+        // EXERCISE: uppercase, lowercase, digit checks
+
+        return errors;
+      };
+
+      document.querySelector("#login-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const errors = {
+          email: validateEmail(),
+          password: validatePassword(),
+        };
+
+        console.log(errors);
+
+        // EXERCISE: Show the error messages based on the errors
+
+        if (!errors.email && !errors.password) {
+          this.submit();
+        }
+
+        // document.querySelector( '#' )
+
+        // ways to get hold of form DOM node
+        // event.target
+        // this
+
+        // any time you want to submit the form programatically do this...
+        // this.submit();
+      });
+
+      const emailEl = document.querySelector("#email");
+
+      emailEl.addEventListener("blur", function () {
+        // validate and display error messges for email
+        console.log("moved away from email");
+      });
+
+      emailEl.addEventListener("input", function (event) {
+        console.log(event.target.value);
+      });
+    </script>
+  </body>
+</html>
