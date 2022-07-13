@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .panel{
+      
+      border: 1px solid black ;
+      }
+      .panel-question{
+       background-color: gray;
+       color: white;
+       padding: 8px;
+      }
+      .panel-answer{
+        padding: 8px;
+          background-color: white;
+          color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      import Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js";
+
+      // create a "root instance"
+      new Vue({
+        el: "#app",
+        data:{
+          visible: true 
+        },
+        methods: {
+          changeMessage() {
+            if(this.visible)
+                this.visible = false;
+            else
+               this.visible = true;
+          },
+        },
+        template:`
+        <div class= 'panel'>
+            <div @click="changeMessage" class="panel-question">
+                What is Vue ?
+            </div>
+            <div class="panel-answer" v-if='visible'>
+                It is a Frontend Framework
+            </div>
+        </div>
+        `
+      });
+    </script>
+  </body>
+</html>

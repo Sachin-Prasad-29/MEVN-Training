@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- {{}} data binding ('live') -->
+    <div id="app">
+      Hello {{name}}
+      <br />
+      {{email}}
+      <br />
+      {{marks}}
+      <br />
+      <button @click="changeMessage">Change greeting</button>
+    </div>
+    <section id="app2">
+      Hello {{backend}}
+    </section>
+
+    <script type="module">
+      import Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js";
+      
+      // create a "root instance"
+      new Vue({
+        el: "#app",
+        data: {
+          name: "Vue Js",
+          email: "Skp",
+          marks: [0, 0, 0],
+        },
+
+        methods: {
+          changeMessage() {
+            this.name = this.name + " !";
+            this.email = this.email + " #";
+            this.marks =this.marks + [1, 2, 3];
+          },
+        },
+      });
+
+    // another root instance
+      new Vue({
+        el: "#app2",
+        data: {
+          backend: "This is from second root enstance",
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      import Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js";
+
+      // create a "root instance"
+      /**
+       * Vue needs a "key" which is unique among list items of a given list so that it can efficiently re-render lists
+       *
+       * Initially...
+       * <li key="Chennai">Chennai</li>
+       * <li key="Mumbai">Mumbai</li>
+       * <li key="Patna">Patna</li>
+       * <li key="Kolkata">Kolkata</li>
+       *
+       * When we add a new city at the beginning...
+       * <li key="New Delhi">New Delhi</li>
+       * <li key="Chennai">Chennai</li>
+       * <li key="Mumbai">Mumbai</li>
+       * <li key="Patna">Patna</li>
+       * <li key="Kolkata">Kolkata</li>
+       *
+       * Vue does 5 DOM manipulations (by default) for the above change
+       *
+       * When key is given, it will check the Node for matching key, and then check if any DOM manipulation is required.
+       * Vue (with key) will do 1 DOM manipulation (create and adding 1 li element at the start of the list)
+       */
+      new Vue({
+        el: "#app",
+        data: {
+          cities: ["Chennai", "Mumbai", "Patna", "Kolkata"],
+          newCity: "",
+          // selectedCity: 'Chennai'
+          selectedCityIdx: 0,
+        },
+        methods: {
+          addCity() {
+            this.cities.unshift(this.newCity);
+          },
+          removeCity() {
+            // const idx = this.cities.indexOf( this.selectedCity );
+            // console.log( idx );
+
+            console.log(this.selectedCityIdx);
+            this.cities.splice(this.selectedCityIdx, 1);
+          },
+        },
+        template: `
+                    <div>
+                        <h2>Add new city</h2> 
+                        <input type="text" v-model="newCity" />
+                        <button @click="addCity">Add city</button>
+
+                        <h2>List of cities</h2>
+                        <ol>
+                            <li v-for="city in cities" :key="city">{{city}}</li>
+                        </ol>
+                        
+                        <!-- <select v-model="selectedCity"> -->
+                        <select v-model="selectedCityIdx">
+                            <option value="">-- Select a city --</option>
+                            <!--
+                                <option v-for="( city ) in cities" :value="city" :key="city">{{city}}</option>
+                            -->
+                            <option v-for="( city, idx ) in cities" :value="idx" :key="city">{{city}}</option>
+                        </select>
+
+                        <button @click="removeCity">Remove city</button>
+                    </div>
+                `,
+      });
+    </script>
+  </body>
+</html>

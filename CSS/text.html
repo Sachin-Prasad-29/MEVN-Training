@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      input {
+        margin: 100px;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="date" id="dt" onchange="handler(event);" />
+    <p id="Text-blick"></p>
+    <script>
+      const handler = (event) => {
+        event.preventDefault();
+
+        const newDate = event.target.value;
+        console.log(newDate);
+      };
+    </script>
+  </body>
+</html>

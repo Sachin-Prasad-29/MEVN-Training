@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      import Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js";
+
+      // create a "root instance"
+      new Vue({
+        el: "#app",
+        data: {
+          cities: ["Chennai", "Mumbai", "Patna", "Kolkata"],
+          newCity: "",
+          selectedCity: '',
+          selectedCityIndex: 0,
+        },
+        methods: {
+          addCity(){
+            this.cities.push(this.newCity);
+          },
+          removeCity() {
+           // this.cities.splice(this.selectedCityIndex,1);
+
+           //filter is the preferred way 
+          this.cities =  this.cities.filter((city) => city !== this.selectedCity);
+          }
+        },
+        // https://v2.vuejs.org/v2/guide/list.html#Array-Change-Detection
+        template: `
+           <div> 
+               <h2>Add new city</h2> 
+               <input type="text" v-model="newCity" /> 
+               <button @click="addCity">Add city</button> 
+
+               <h2>List of cities</h2>
+               <ol>
+                <li v-for="city in cities" :key="city">{{city}}</li>
+               </ol>
+
+               <select v-model="selectedCity">
+                <option value="">-- Select a city --</option>
+                <option v-for="( city, idx ) in cities" :value="city" :key="city">{{city}}</option>
+              </select>
+              <button @click="removeCity">Remove city</button>
+            </div>
+        `,
+        
+      });
+    </script>
+  </body>
+</html>
