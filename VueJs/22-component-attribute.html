@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .panel {
+        border: 1px solid black;
+      }
+      .panel-question {
+        background-color: gray;
+        color: white;
+        padding: 8px;
+      }
+      .panel-answer {
+        padding: 8px;
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      import Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js";
+      //create components 1
+      const panelQuestion = {
+        props:{
+           HideMessage: {
+            type:Function,
+            required:true
+            }
+        },
+        template: `
+            <div class="panel-question" @click="HideMessage">
+                  What is Vue Js ?
+              </div> 
+        `,
+      };
+      
+      //create components 2
+      const PanelAnswer = {
+        props: {
+          visible: Boolean,
+          answer: {
+            type: String,
+            default: "No Answer Found default value",
+          }
+        },
+        template: `
+        <div class="panel-answer" v-if="visible">
+          {{answer}}
+        </div>
+        `,
+      };
+
+
+      // create a "root instance"
+      new Vue({
+        el: "#app",
+        components: {
+          PanelQuestion: panelQuestion,
+          PanelAnswer,
+          // PanelAnswer: PanelAnswer     // if both the name will be same we wil use it once
+        },
+        data: {
+          visible: true,
+        },
+        methods: {
+          HideMessage() {
+            if (this.visible) this.visible = false;
+            else this.visible = true;
+          },
+        },
+        template: `
+        <div class= 'panel'>
+            <PanelQuestion :HideMessage="HideMessage"/>
+            <PanelAnswer :visible="visible" answer="Its a frontEnd Framework"/>
+        </div>
+        `,
+      });
+    </script>
+  </body>
+</html>

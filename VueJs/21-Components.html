@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .panel{
+      
+      border: 1px solid black ;
+      }
+      .panel-question{
+       background-color: gray;
+       color: white;
+       padding: 8px;
+      }
+      .panel-answer{
+        padding: 8px;
+          background-color: white;
+          color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      import Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js";
+      //create components 1
+      const panelQuestion = {
+        template:`
+            <div class="panel-question">
+                  What is Vue Js ?
+              </div> 
+        `
+      };
+       //create components 2
+      const PanelAnswer = {
+        template:`
+        <div class="panel-answer">
+                It is a Frontend Framework
+            </div>
+        `
+      };
+
+      // create a "root instance"
+      new Vue({
+        el: "#app",
+        components:{
+          PanelQuestion:panelQuestion,
+          PanelAnswer
+         // PanelAnswer: PanelAnswer     // if both the name will be same we wil use it once
+        },
+        data:{
+        },
+        methods: {
+          changeMessage() {
+            if(this.visible)
+                this.visible = false;
+            else
+               this.visible = true;
+          },
+        },
+        template:`
+        <div class= 'panel'>
+            <PanelQuestion />
+            <PanelAnswer />
+        </div>
+        `
+      });
+    </script>
+  </body>
+</html>

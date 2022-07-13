@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .panel {
+                border: 1px solid #555;
+            }
+
+            .panel__question,
+            .panel__answer {
+                padding: 0.75em;
+            }
+
+            .panel__question {
+                background-color: #555;
+                color: ivory;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.js';
+
+            // component definition object
+            const PanelQuestion = {
+                methods: {
+                    toggleParent() {
+                        // inform the parent to toggle
+                        this.$emit( 'tg' );
+                    }
+                },
+                template: `
+                    <div class="panel__question" @click="toggleParent">
+                        What is Vue?
+                    </div>
+                `
+            };
+
+            const PanelAnswer = {
+                // props: [ 'open' ],
+                props : {
+                    open: Boolean,
+                    answer: {
+                        type: String,
+                        default: 'No answer provided' // if the answer prop is missing, this value is assigned to it
+                    }
+                },
+                template: `
+                    <div class="panel__answer" v-if="open">
+                        {{answer}}
+                    </div>
+                `
+            };
+
+            new Vue({
+                el: '#app',
+                // local registration
+                components: {
+                    PanelQuestion,
+                    PanelAnswer
+                },
+                data: {
+                    visible: true
+                },
+                methods: {
+                    toggle() {
+                        this.visible = !this.visible;
+                    }
+                },
+                template: `
+                    <div class="panel">
+                        <!-- <panel-question /> -->
+                        <PanelQuestion @tg="toggle" />
+                        <PanelAnswer :open="visible" answer="Vue is a frontend library" />
+                    </div>
+                `
+            });
+        </script>
+    </body>
+</html>
