@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
+
+    <script type="module">
+      import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js';
+      import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
+
+      Vue.use(Vuex);
+
+      const fetchWorkshops = async () => {
+        const response = await axios.get(`http://workshops-server.herokuapp.com/workshops`);
+        return response.data;
+      };
+
+      const store = new Vuex.Store({
+        state: {
+          workshops: [],
+          error: '',
+          status: 'UNDEFINED',
+        },
+        getters: {
+          // "derived from state"
+          numWorkshops(state) {
+            // defined as a method, but used like a property
+            return {
+              any: state.workshops.length,
+              online: state.workshops.filter((w) => w.modes.online).length,
+              inPerson: state.workshops.filter((w) => w.modes.inPerson).length,
+            };
+          },
+        },
+        mutations: {
+          setWorkshops(state, payload) {
+            state.workshops = payload;
+          },
+          setError(state, payload) {
+            state.error = payload;
+          },
+          changeStatus(state, payload) {
+            state.status = payload;
+          },
+        },
+        actions: {
+          async fetchWorkshops({ commit }) {
+            commit('changeStatus', 'LOADING');
+
+            try {
+              const data = await fetchWorkshops();
+
+              commit('setWorkshops', data);
+              commit('changeStatus', 'LOADED');
+            } catch (error) {
+              commit('setError', error.message);
+              commit('changeStatus', 'ERROR');
+            }
+          },
+        },
+      });
+
+      new Vue({
+        el: '#app',
+        // store: store,
+        store, // you can this.$store to refer to the store in any component
+        computed: {
+          workshops() {
+            return this.$store.state.workshops;
+          },
+          error() {
+            return this.$store.state.error;
+          },
+          status() {
+            return this.$store.state.status;
+          },
+          numWorkshops() {
+            return this.$store.getters.numWorkshops;
+          },
+        },
+        template: `
+                <div class="container my-5">
+                    <div v-if="status === 'LOADING'" class="spinner-border" role="status"></div>
+                    <div v-else-if="status === 'ERROR'">
+                        {{error}}
+                    </div>
+                    <div v-else>
+                        <div>
+                            <div>Total: {{numWorkshops.any}}</div>
+                            <div>Online: {{numWorkshops.online}}</div>
+                            <div>In-person: {{numWorkshops.inPerson}}</div>
+                        </div>
+                        <ol class="list-group">
+                            <li class="list-group-item" v-for="workshop in workshops" :key="workshop.id">
+                                {{workshop.name}}
+                                <span class="badge" :class="workshop.modes.online ? 'bg-primary' : 'bg-secondary'">online</span>
+                                <span class="badge" :class="workshop.modes.inPerson ? 'bg-primary' : 'bg-secondary'">In-person</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            `,
+        created() {
+          this.$store.dispatch('fetchWorkshops');
+        },
+      });
+    </script>
+  </body>
+</html>

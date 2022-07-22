@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js';
+            import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
+
+            Vue.use( Vuex );
+
+            const store = new Vuex.Store({
+                state: {
+                    value: 0
+                },
+                mutations: {
+                    decrement( state ) {
+                        state.value--;
+                    },
+                    increment( state ) {
+                        state.value++;
+                    }
+                }
+            });
+
+            new Vue({
+                el: '#app',
+                methods: {
+                    dec() {
+                        // we request the store to make mutations using commit() method
+                        store.commit( 'decrement' );
+                    },
+                    inc() {
+                        store.commit( 'increment' );
+                    }
+                },
+                computed: {
+                    value() {
+                        return store.state.value;
+                    }
+                },
+                template: `
+                    <div>
+                        <button @click="dec">-</button>
+                        <span>{{value}}</span>
+                        <button @click="inc">+</button>
+                    </div>
+                `
+            });
+        </script>
+    </body>
+</html>

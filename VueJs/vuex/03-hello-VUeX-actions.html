@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.4/vue.esm.browser.min.js';
+      import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
+
+      Vue.use(Vuex);
+
+      //mutations should be synchronous methods
+      // actions can be asynchrounous mthods
+      const store = new Vuex.Store({
+        state: {
+          value: 0,
+          processing: false,
+        },
+        mutations: {
+          decrement(state, payload) {
+            state.value -= payload;
+          },
+          increment(state, payload) {
+            state.value += payload;
+          },
+          setProcessing(state, payload) {
+            state.processing = payload;
+          },
+        },
+        actions: {
+          decrement(context, payload) {
+            context.commit('setProcessing', true);
+
+            //let us do and async operation
+            setTimeout(() => {
+              context.commit('decrement', payload);
+              context.commit('setProcessing', false);
+            }, 2000);
+          },
+          increament(context, payload) {
+            context.commit('setProcessing', true);
+            setTimeout(() => {
+              context.commit('increment', payload);
+              context.commit('setProcessing', false);
+            }, 2000);
+          },
+        },
+      });
+
+      new Vue({
+        el: '#app',
+        data: {
+          changeBy: 1,
+        },
+        methods: {
+          dec() {
+            // we request the store to make mutations using commit() method
+            store.dispatch('decrement', this.changeBy);
+          },
+          inc() {
+            store.dispatch('increament', this.changeBy); // we request the store to make action using dispatch() method
+          },
+        },
+        computed: {
+          value() {
+            return store.state.value;
+          },
+          processing() {
+            return store.state.processing;
+          },
+        },
+        template: `
+                    <div>
+                        <input type="number" v-model.number="changeBy" />
+
+                        <button @click="dec" :disabled="processing"> - </button>
+
+                        <span v-if="!processing">{{value}}</span>
+                        <span v-else class="spinner-border" role="status">  </span>
+                        <button @click="inc" :disabled="processing"> + </button>
+                    </div>
+                `,
+      });
+    </script>
+  </body>
+</html>
